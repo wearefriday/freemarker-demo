@@ -27,7 +27,7 @@ public class ApplicationFilter extends AbstractFilter implements AbstractFilter.
 
     @Override
     protected Iterable<Class<? extends Filter>> dependencies() {
-        return Arrays.asList(
+        return Arrays.<Class<? extends Filter>>asList(
                 LocalizationFilter.class);
     }
 

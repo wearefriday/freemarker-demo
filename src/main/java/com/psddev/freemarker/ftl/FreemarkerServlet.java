@@ -60,7 +60,7 @@ public class FreemarkerServlet extends freemarker.ext.servlet.FreemarkerServlet 
     private LocalizingWrapper localizingWrapper;
 
     // Additional Enums from 3rd party dependencies that should be available in the templates.
-    private static final List<Class<? extends Enum>> EXTERNAL_ENUM_CLASSES = Arrays.asList(
+    private static final List<Class<? extends Enum>> EXTERNAL_ENUM_CLASSES = Arrays.<Class<? extends Enum>>asList(
             FrameTag.InsertionMode.class);
 
     private final Lazy<Map<String, TemplateHashModel>> templateHashModels = new Lazy<Map<String, TemplateHashModel>>() {
