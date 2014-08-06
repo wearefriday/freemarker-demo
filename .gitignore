@@ -1,0 +1,22 @@
+# Please add IDE-specific files (e.g. .*.sw* from Vim or .idea from IntelliJ)
+# to your global config. If you don't have one set up already, you can create
+# it using "touch ~/.gitignore ; git config --global core.excludesfile ~/.gitignore".
+
+# Maven
+target
+/target/
+
+# Node / Bower / Browserify
+node
+node_modules
+
+# Bower
+bower_components
+
+# auto generated classes
+src/main/java/com/psddev/freemarker/i18n/*.java
+!src/main/java/com/psddev/freemarker/i18n/MessageConveyorCache.java
+!src/main/java/com/psddev/freemarker/i18n/ResourceBundleListener.java
+
+/overlays/*
+doc/

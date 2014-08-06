@@ -1,0 +1,7 @@
+{
+    "name": "freemarker",
+    "version": "1.0.0",
+    "devDependencies": {
+        "bsp-grunt": "1.0.7"
+    }
+}
