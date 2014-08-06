@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Renderer.Paths(
-        @Renderer.Path("/WEB-INF/renderer/mainContent/article.ftl")
+        @Renderer.Path("/WEB-INF/ftl/renderer/mainContent/article.ftl")
+//        @Renderer.Path("/WEB-INF/jsp/renderer/mainContent/article.jsp")
 )
 public class Article extends Content implements Directory.Item {
 

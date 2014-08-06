@@ -4,7 +4,8 @@ import com.psddev.cms.db.Renderer;
 import com.psddev.dari.util.StorageItem;
 
 @Renderer.Paths(
-        @Renderer.Path("/WEB-INF/renderer/content/image.ftl")
+        @Renderer.Path("/WEB-INF/ftl/renderer/content/image.ftl")
+//        @Renderer.Path("/WEB-INF/jsp/renderer/content/image.jsp")
 )
 public class Image extends Content {
 

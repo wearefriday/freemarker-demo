@@ -1,4 +1,4 @@
-[#include "/WEB-INF/common/taglibs.ftl" /]
+[#include "/WEB-INF/ftl/common/taglibs.ftl" /]
 
 [#-- @ftlvariable name="Messages" type="com.psddev.freemarker.i18n.Messages" --]
 [#-- @ftlvariable name="object" type="com.psddev.freemarker.model.Author" --]

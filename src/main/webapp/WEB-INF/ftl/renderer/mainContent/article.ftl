@@ -1,4 +1,4 @@
-[#include "/WEB-INF/common/taglibs.ftl" /]
+[#include "/WEB-INF/ftl/common/taglibs.ftl" /]
 
 [#-- @ftlvariable name="Constants" type="com.psddev.freemarker.app.Constants" --]
 [#-- @ftlvariable name="Messages" type="com.psddev.freemarker.i18n.Messages" --]
@@ -10,7 +10,8 @@
 
 
     <div class="fm-article-title">
-        <b>Title:</b> ${mainObject.title!"No Title!"}
+        <b>Title:</b>
+        ${mainObject.title!"No Title!"}
     </div>
 
 
