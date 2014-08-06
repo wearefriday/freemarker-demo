@@ -14,13 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 
 public class LocalizingWrapper extends BeansWrapper {
 
-    private transient HttpServletRequest request;
+    private transient ThreadLocal<HttpServletRequest> request = new ThreadLocal<>();
 
     public LocalizingWrapper() {
     }
 
     void setRequest(HttpServletRequest request) {
-        this.request = request;
+        if (request != null) {
+            this.request.set(request);
+        } else {
+            this.request.remove();
+        }
     }
 
     @Override
@@ -40,8 +44,8 @@ public class LocalizingWrapper extends BeansWrapper {
     private Locale getLocale() {
 
         Locale locale = null;
-        if (request != null) {
-            locale = LocalizationFilter.Static.getLocale(request);
+        if (request.get() != null) {
+            locale = LocalizationFilter.Static.getLocale(request.get());
         }
 
         if (locale == null) {

@@ -57,6 +57,7 @@ public class FreemarkerServlet extends freemarker.ext.servlet.FreemarkerServlet 
 
     private static final int DEFAULT_TEMPLATE_UPDATE_DELAY_SECONDS = 10;
 
+    private final ThreadLocal<Template> firstTemplate = new ThreadLocal<>();
     private LocalizingWrapper localizingWrapper;
 
     // Additional Enums from 3rd party dependencies that should be available in the templates.
@@ -221,8 +222,12 @@ public class FreemarkerServlet extends freemarker.ext.servlet.FreemarkerServlet 
     protected boolean preTemplateProcess(HttpServletRequest request, HttpServletResponse response, Template template, TemplateModel data) throws ServletException, IOException {
 
         // first - this should be the first block in the method
-        if (localizingWrapper != null) {
-            localizingWrapper.setRequest(request);
+        if (firstTemplate.get() == null) {
+            firstTemplate.set(template);
+
+            if (localizingWrapper != null) {
+                localizingWrapper.setRequest(request);
+            }
         }
 
         if (data instanceof SimpleHash) {
@@ -243,7 +248,15 @@ public class FreemarkerServlet extends freemarker.ext.servlet.FreemarkerServlet 
      */
     @Override
     protected void postTemplateProcess(HttpServletRequest request, HttpServletResponse response, Template template, TemplateModel data) throws ServletException, IOException {
-        // nothing to do...
+
+        // finally - this should be the last block in the method
+        if (firstTemplate.get() == template) {
+            firstTemplate.remove();
+
+            if (localizingWrapper != null) {
+                localizingWrapper.setRequest(null);
+            }
+        }
     }
 
     private Map<String, TemplateHashModel> getTemplateHashModels() {
